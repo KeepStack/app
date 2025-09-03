@@ -1,9 +1,8 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import React from "react";
-import ReactDOM from 'react-dom/client'
+import React from 'react'
+import ReactDOM from "react-dom/client";
 import './index.css'
 import App from './App.tsx'
+import Login from './pages/Login.tsx'
 
 import {
   createBrowserRouter,
@@ -15,6 +14,7 @@ import {
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
+      <Route path="/Login" element={<Login />} />
     </Route>
   )
 );
