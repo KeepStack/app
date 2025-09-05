@@ -12,3 +12,9 @@ class User:
     def _validate_password(self):
         """ Validate password strength """
         pass
+
+    def _get_user_by_id(self):
+        return self.id
+    
+    def _get_user_by_email(self):
+        return self.email
