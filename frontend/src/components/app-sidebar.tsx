@@ -1,4 +1,5 @@
-import { BookMarked, Zap, Settings } from "lucide-react";
+import React from "react";
+import { BookMarked, Zap, Settings, User } from "lucide-react";
 
 import {
   Sidebar,
@@ -28,11 +29,19 @@ const items = [
     url: "#",
     icon: Settings,
   },
+  {
+    title: "My Account",
+    url: "#",
+    icon: User,
+  },
 ];
 
-const AppSidebar = () => {
+const AppSidebar = ({...props}: React.ComponentProps<typeof Sidebar>) => {
   return (
-    <Sidebar>
+    <Sidebar
+      className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
+      {...props}
+    >
       <SidebarHeader />
       <SidebarContent>
         <SidebarGroup>
