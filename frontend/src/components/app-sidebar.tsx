@@ -1,5 +1,5 @@
 import React from "react";
-import { BookMarked, Zap, Settings, User } from "lucide-react";
+import { BookMarked, Zap, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -10,8 +10,11 @@ import {
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
-  SidebarMenuButton
+  SidebarMenuButton,
 } from "@/components/ui/sidebar";
+
+import NavUser from "./nav-user";
+import FolderSection from "./folder-section";
 
 const items = [
   {
@@ -29,14 +32,14 @@ const items = [
     url: "#",
     icon: Settings,
   },
-  {
-    title: "My Account",
-    url: "#",
-    icon: User,
-  },
 ];
 
-const AppSidebar = ({...props}: React.ComponentProps<typeof Sidebar>) => {
+const user = { //replaced with the actual user
+  name: "John Doe",
+  avatar: "",
+};
+
+const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
   return (
     <Sidebar
       className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
@@ -58,10 +61,13 @@ const AppSidebar = ({...props}: React.ComponentProps<typeof Sidebar>) => {
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
+            <FolderSection />
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>
+        <NavUser user={user} />
+      </SidebarFooter>
     </Sidebar>
   );
 };

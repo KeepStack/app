@@ -1,10 +1,8 @@
 import AppSidebar from "@/components/app-sidebar";
-import { Separator } from "@/components/ui/separator";
 import SiteHeader from "@/components/site-header";
 import {
   SidebarInset,
   SidebarProvider,
-  SidebarTrigger,
 } from "@/components/ui/sidebar";
 
 const Dashboard = () => {
