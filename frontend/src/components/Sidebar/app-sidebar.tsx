@@ -1,5 +1,15 @@
 import React from "react";
-import { BookMarked, Zap, Settings } from "lucide-react";
+import {
+  BookMarked,
+  Plus,
+  Zap,
+  Settings,
+  Send,
+  CircleQuestionMark,
+} from "lucide-react";
+import { SearchForm } from "../ui/search";
+import { Button } from "../ui/button";
+import { NavSecondary } from "./nav-secondary";
 
 import {
   Sidebar,
@@ -34,18 +44,47 @@ const items = [
   },
 ];
 
-const user = { //replaced with the actual user
+const navSecondary = [
+  {
+    title: "Support",
+    url: "#",
+    icon: CircleQuestionMark,
+  },
+  {
+    title: "Feedback",
+    url: "#",
+    icon: Send,
+  },
+];
+
+const user = {
+  //replaced with the actual user
   name: "John Doe",
   avatar: "",
 };
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
+  const handleSearch = () => {
+    // Implement search functionality here
+  };
+  const addBookmark = () => {
+    // Implement add bookmark functionality here
+  };
   return (
     <Sidebar
       className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
       {...props}
     >
-      <SidebarHeader />
+      <SidebarHeader>
+        <SearchForm className="w-full sm:ml-auto sm:w-auto mx-auto mt-1" />
+        <Button
+          variant="secondary"
+          className="w-full flex h-[2rem] items-center justify-center mt-1"
+          onClick={() => addBookmark()}
+        >
+          + Add Bookmark
+        </Button>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
@@ -66,6 +105,7 @@ const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
+        <NavSecondary items={navSecondary} className="mt-auto" />
         <NavUser user={user} />
       </SidebarFooter>
     </Sidebar>

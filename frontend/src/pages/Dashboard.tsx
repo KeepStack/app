@@ -1,9 +1,6 @@
-import AppSidebar from "@/components/app-sidebar";
-import SiteHeader from "@/components/site-header";
-import {
-  SidebarInset,
-  SidebarProvider,
-} from "@/components/ui/sidebar";
+import AppSidebar from "@/components/Sidebar/app-sidebar";
+import SiteHeader from "@/components/Navbar/site-header";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 const Dashboard = () => {
   return (
