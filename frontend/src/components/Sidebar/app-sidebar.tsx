@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/sidebar";
 
 import NavUser from "./nav-user";
+
 import FolderSection from "./folder-section";
 
 const items = [
@@ -64,51 +65,51 @@ const user = {
 };
 
 const AppSidebar = ({ ...props }: React.ComponentProps<typeof Sidebar>) => {
-  const handleSearch = () => {
-    // Implement search functionality here
-  };
   const addBookmark = () => {
     // Implement add bookmark functionality here
   };
   return (
-    <Sidebar
-      className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
-      {...props}
-    >
-      <SidebarHeader>
-        <SearchForm className="w-full sm:ml-auto sm:w-auto mx-auto mt-1" />
-        <Button
-          variant="secondary"
-          className="w-full flex h-[2rem] items-center justify-center mt-1"
-          onClick={() => addBookmark()}
-        >
-          + Add Bookmark
-        </Button>
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-            <FolderSection />
-          </SidebarGroupContent>
-        </SidebarGroup>
-      </SidebarContent>
-      <SidebarFooter>
-        <NavSecondary items={navSecondary} className="mt-auto" />
-        <NavUser user={user} />
-      </SidebarFooter>
-    </Sidebar>
+    <>
+      <Sidebar
+        className="top-(--header-height) h-[calc(100svh-var(--header-height))]!"
+        {...props}
+      >
+        <SidebarHeader>
+          <SearchForm className="w-full sm:ml-auto sm:w-auto mx-auto mt-1" />
+          <Button
+            variant="secondary"
+            className="w-full flex h-[2rem] items-center justify-center mt-1"
+            onClick={() => addBookmark()}
+          >
+            <Plus />
+            Add Bookmark
+          </Button>
+        </SidebarHeader>
+        <SidebarContent>
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {items.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <a href={item.url}>
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+              <FolderSection />
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
+        <SidebarFooter>
+          <NavSecondary items={navSecondary} className="mt-auto" />
+          <NavUser user={user} />
+        </SidebarFooter>
+      </Sidebar> 
+    </>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Plus, MoreHorizontal, Folder, Trash2 } from "lucide-react";
 import { ScrollArea } from "../ui/scroll-area";
-import { type Page } from "../ui/list-item";
+import { type Page } from "@/types/page";
 
 import {
   SidebarGroup,
@@ -203,6 +203,10 @@ const FolderSection = ({
     }
   };
 
+  const showPages = async () => {
+
+  }
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>Folders</SidebarGroupLabel>
@@ -216,7 +220,7 @@ const FolderSection = ({
               <SidebarMenuItem key={folder.id}>
                 <div className="flex items-center w-[114%]">
                   <SidebarMenuButton asChild>
-                    <div>
+                    <div onClick = {() => showPages}>
                       <Folder />
                       {folder.isEditing ? (
                         <input

@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
 import { BookImage, FileText, Play, Text, Globe } from "lucide-react";
-
-export interface Page {
-  id: string;
-  title: string;
-  url: string;
-  type: "video" | "text" | "document" | "image" | "other";
-  dateAdded: Date;
-  description?: string;
-}
+import { SidebarGroupContent } from "../ui/sidebar";
+import { type Page } from "@/types/page";
 
 interface ListItemProps {
   page: Page;
@@ -98,34 +91,32 @@ const ListItem = ({ page, onClick }: ListItemProps) => {
   };
 
   return (
-    <div
-      className={`flex items-center gap-3 px-4 py-3 rounded-lg w-full mx-auto
-      ${
-        unread
-          ? "bg-background text-foreground"
-          : "bg-ring text-muted-foreground"
-      }`}
+    <a
+      href={page.url}
+      className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight whitespace-nowrap last:border-b-0"
       onClick={() => handleClick(page)}
     >
-      <div>
+      <div className="flex gap-3 items-start">
         {faviconUrl && !faviconError ? (
           <img
             src={faviconUrl}
             alt={`${getDomainFromUrl(page.url)} favicon`}
-            className="w-48 h-48 rounded-sm"
+            className="w-8 h-8 rounded-sm flex-shrink-0"
             onError={() => setFaviconError(true)}
           />
         ) : (
-          <div className="w-48 h-48 text-muted-foreground">
+          <div className="w-8 h-8 text-muted-foreground flex-shrink-0">
             {getFallbackIcon()}
           </div>
         )}
-        <h3 className="text-1.25rem font-medium max-w-[75%] truncate">
-          {page.title}
-        </h3>
-        <p className="text-1rem font-light max-w-[75%] truncate">{page.description}</p>
+        <div className="flex flex-col gap-1 min-w-0">
+          <span className="font-medium">{page.title}</span>
+          <span className="line-clamp-2 w-[260px] text-xs whitespace-break-spaces">
+            {page.description}
+          </span>
+        </div>
       </div>
-    </div>
+    </a>
   );
 };
 

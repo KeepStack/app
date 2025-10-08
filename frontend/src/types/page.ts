@@ -7,6 +7,4 @@ export interface Page {
   description?: string;
 }
 
-export interface PageCreateRequest {
-  
-}
+export interface PageCreateRequest {}
