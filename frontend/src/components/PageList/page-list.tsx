@@ -2,14 +2,6 @@ import { useLocation } from "react-router-dom";
 import { type Page } from "@/types/page";
 import ListItem from "../PageList/list-item";
 
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarHeader,
-} from "@/components/ui/sidebar";
-
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 

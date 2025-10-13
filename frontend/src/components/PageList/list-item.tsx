@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { BookImage, FileText, Play, Text, Globe } from "lucide-react";
-import { SidebarGroupContent } from "../ui/sidebar";
 import { type Page } from "@/types/page";
+import { EllipsisVertical } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface ListItemProps {
   page: Page;
@@ -92,11 +98,10 @@ const ListItem = ({ page, onClick }: ListItemProps) => {
 
   return (
     <a
-      href={page.url}
       className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground flex flex-col items-start gap-2 border-b p-4 text-sm leading-tight whitespace-nowrap last:border-b-0"
       onClick={() => handleClick(page)}
     >
-      <div className="flex gap-3 items-start">
+      <div className="flex gap-3 items-center">
         {faviconUrl && !faviconError ? (
           <img
             src={faviconUrl}
@@ -111,9 +116,26 @@ const ListItem = ({ page, onClick }: ListItemProps) => {
         )}
         <div className="flex flex-col gap-1 min-w-0">
           <span className="font-medium">{page.title}</span>
-          <span className="line-clamp-2 w-[260px] text-xs whitespace-break-spaces">
+          <span className="line-clamp-1 w-[260px] text-xs whitespace-break-spaces">
             {page.description}
           </span>
+        </div>
+        <div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <EllipsisVertical size={16} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuItem>
+                <a onClick={() => {}}>Remove</a>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <a href={page.url} target="_blank">
+                  Open in New Tab
+                </a>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </a>
