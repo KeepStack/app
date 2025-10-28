@@ -130,7 +130,7 @@ const ListItem = ({ page, onClick }: ListItemProps) => {
                 <a onClick={() => {}}>Remove</a>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <a href={page.url} target="_blank">
+                <a href={page.url}>
                   Open in New Tab
                 </a>
               </DropdownMenuItem>
