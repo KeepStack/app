@@ -46,7 +46,6 @@ const Tabs = () => {
   const [activeTab, setActiveTab] = useState<Tab>();
 
   const handleTabClick = (tab: Tab) => {
-    // Update active state for all tabs
     setTabsList(
       tabsList.map((t) => ({
         ...t,
@@ -60,22 +59,22 @@ const Tabs = () => {
     <div className="flex flex-col w-full h-screen">
       {/* Tab headers */}
       {tabsList.length > 0 ? (
-        <div className="flex flex-row overflow-x-auto">
+        <div className="flex flex-row overflow-x-auto bg-secondary">
           {tabsList.map((tab) => (
             <div
               key={tab.id}
               className={`flex items-center justify-between px-4 py-2 min-w-32 cursor-pointer border-r ${
                 tab.isActive
-                  ? "bg-primary-foreground-b-2"
-                  : "bg-primary hover:bg-chart-5"
+                  ? "bg-background"
+                  : "bg-secondary hover:bg-chart-5"
               }`}
               onClick={() => handleTabClick(tab)}
             >
-              <span className="truncate text-left text-sm text-gray-200 mr-2">
+              <span className="truncate text-left text-sm text-foreground">
                 {tab.title}
               </span>
-              <button className="hover:bg-gray-600 p-1 transition-colors">
-                <X size={14} className="text-gray-400" />
+              <button>
+                <X size={14} className="text-foreground" />
               </button>
             </div>
           ))}
