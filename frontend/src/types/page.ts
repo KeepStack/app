@@ -6,5 +6,3 @@ export interface Page {
   dateAdded: Date;
   description?: string;
 }
-
-export interface PageCreateRequest {}

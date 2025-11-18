@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import './index.css'
 import App from './App.tsx'
 import Login from './pages/Login.tsx'
-import Dashboard from './pages/Dashboard.tsx';
+import Dashboard from './pages/Dashboard/Dashboard.tsx';
 
 import {
   createBrowserRouter,

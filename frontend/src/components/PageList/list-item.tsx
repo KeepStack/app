@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { BookImage, FileText, Play, Text, Globe } from "lucide-react";
+import {
+  BookImage,
+  ExternalLink,
+  FileText,
+  Play,
+  Text,
+  Globe,
+} from "lucide-react";
 import { type Page } from "@/types/page";
 import { EllipsisVertical } from "lucide-react";
 import {
@@ -130,8 +137,9 @@ const ListItem = ({ page, onClick }: ListItemProps) => {
                 <a onClick={() => {}}>Remove</a>
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <a href={page.url}>
-                  Open in New Tab
+                <a href={page.url} className="inline-flex items-center gap-2">
+                  Open Link
+                  <ExternalLink className="w-3 h-3" />
                 </a>
               </DropdownMenuItem>
             </DropdownMenuContent>

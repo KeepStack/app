@@ -1,7 +1,7 @@
 import AppSidebar from "@/components/Sidebar/app-sidebar";
 import SiteHeader from "@/components/Navbar/site-header";
 import PageList from "@/components/PageList/page-list";
-import Blank from "@/components/Viewer/blank";
+import Tabs from "@/components/Viewer/tabs";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 const Dashboard = () => {
@@ -13,7 +13,7 @@ const Dashboard = () => {
           <AppSidebar />
           <PageList />
           <SidebarInset className="overflow-auto">
-            <Blank /> {/* This will be replaced by the viewer component */}
+            <Tabs /> {/* This will be replaced by the viewer component */}
           </SidebarInset>
         </div>
       </SidebarProvider>
