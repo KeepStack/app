@@ -9,3 +9,4 @@ export interface User {
   bookmarks: Page[];
   folders: NavFolder[];
 }
+

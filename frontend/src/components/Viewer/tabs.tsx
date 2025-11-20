@@ -2,12 +2,11 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { type Page } from "@/types/page";
 import Blank from "./blank";
-import TextContent from "./text-content";
+//import TextContent from "./text-content";
 
 interface Tab extends Page {
   isActive: boolean;
   content: string;
-  
 }
 
 const initialTabs: Tab[] = [
@@ -54,7 +53,7 @@ const Tabs = () => {
     );
     setActiveTab(tab);
   };
-  
+
   return (
     <div className="flex flex-col w-full h-screen">
       {/* Tab headers */}
@@ -64,9 +63,7 @@ const Tabs = () => {
             <div
               key={tab.id}
               className={`flex items-center justify-between px-4 py-2 min-w-32 cursor-pointer border-r ${
-                tab.isActive
-                  ? "bg-background"
-                  : "bg-secondary hover:bg-chart-5"
+                tab.isActive ? "bg-background" : "bg-secondary hover:bg-chart-5"
               }`}
               onClick={() => handleTabClick(tab)}
             >
@@ -79,12 +76,11 @@ const Tabs = () => {
             </div>
           ))}
         </div>
-      ) : null}
-
+      ) : (
+        <Blank />
+      )}
       {/* Tab content */}
-      <div className="flex-1 overflow-auto">
-        {activeTab?.content}
-      </div>
+      <div className="flex-1 overflow-auto">{activeTab!.content}</div>
     </div>
   );
 };
