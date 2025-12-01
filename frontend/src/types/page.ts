@@ -5,4 +5,5 @@ export interface Page {
   type: "video" | "text" | "document" | "image" | "other";
   dateAdded: Date;
   description?: string;
+  isRead?: boolean;
 }

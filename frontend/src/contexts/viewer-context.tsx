@@ -1,5 +1,6 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
+import type { Page } from "@/types/page";
 import type { User } from "@/types/user";
 import type { Tab } from "@/types/tab";
 
@@ -14,12 +15,13 @@ export interface ViewerContextType {
 
 interface ViewerProviderProps {
   children: ReactNode;
+  pageList: Page[]
   user: User;
 }
 
 const ViewerContext = createContext<ViewerContextType | undefined>(undefined);
 
-const ViewerProvider = ({ children, user }: ViewerProviderProps) => {
+const ViewerProvider = ({ children, pageList, user }: ViewerProviderProps) => {
   const [tabsList, setTabsList] = useState<Tab[]>([]);
   const [activeTab, setActiveTab] = useState<Tab | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);

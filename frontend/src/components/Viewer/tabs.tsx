@@ -8,19 +8,19 @@ const initialTabs: Tab[] = [
   {
     index: 1,
     title: "Welcome",
-    url: "/",
+    url: "https://example.com/page1",
     isActive: true,
   },
   {
     index: 2,
     title: "About",
-    url: "/",
+    url: "https://example.com/page2",
     isActive: false,
   },
   {
     index: 3,
     title: "Settings",
-    url: "/",
+    url: "https://example.com/page3",
     isActive: false,
   },
 ];
@@ -66,7 +66,7 @@ const Tabs = () => {
         <Blank />
       )}
       {/* Tab content */}
-      <div className="flex-1 overflow-auto">{activeTab!.url}</div>
+      {activeTab && <div className="flex-1 overflow-auto">{activeTab.url}</div>}
     </div>
   );
 };
