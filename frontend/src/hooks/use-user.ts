@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../contexts/user-context";
 
-export function useUser()  {
+const useUser = () => {
   const context = useContext(UserContext);
 
   if (!context) {
@@ -9,3 +9,5 @@ export function useUser()  {
   }
   return context;
 };
+
+export default useUser;

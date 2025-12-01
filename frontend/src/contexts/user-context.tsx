@@ -28,7 +28,7 @@ const defaultPreferences: UserPreferences = {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export function UserProvider({ children }: UserProviderProps) {
+const UserProvider = ({ children }: UserProviderProps) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [preferences, setPreferences] =
@@ -57,10 +57,10 @@ export function UserProvider({ children }: UserProviderProps) {
     checkAuth();
   }, []);
 
-  const login = async (
+  const login = async () =>
     //username: string, password: string
-  ) => {
-    /* setIsLoading(true);
+    {
+      /* setIsLoading(true);
     try {
       const response = await fetch("/api/login", {
         method: "POST",
@@ -75,7 +75,7 @@ export function UserProvider({ children }: UserProviderProps) {
     } finally {
       setIsLoading(false);
     } */
-  };
+    };
 
   const logout = () => {
     /* setUser(null);
@@ -109,6 +109,6 @@ export function UserProvider({ children }: UserProviderProps) {
   };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
-}
+};
 
-export { UserContext };
+export { UserProvider, UserContext };
