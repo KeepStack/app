@@ -1,2 +1,2 @@
 # app
-The web application for LinkStash
+The web application for KeepStack
