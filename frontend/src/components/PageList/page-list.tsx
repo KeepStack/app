@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { type Page } from "@/types/page";
+import type { Page } from "@/types/page";
 import ListItem from "../PageList/list-item";
-
+//import useDashboard from "@/hooks/use-dashboard"
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 
@@ -38,6 +38,7 @@ const PageList = () => {
       isRead: true,
     },
   ];
+
   const displayedList = useMemo(() => {
     if (!unreadsToggle) {
       return pages;
@@ -45,6 +46,7 @@ const PageList = () => {
       return pages.filter((page) => !page.isRead);
     }
   }, [unreadsToggle])
+
   return (
     <aside className="flex w-82 flex-col border-r h-[calc(100vh-var(--header-height))] overflow-hidden">
       <div className="flex w-full items-center justify-between border-b p-4 flex-shrink-0">

@@ -1,34 +1,35 @@
 import { createContext, useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
-import type { Page } from "@/types/page";
 import type { User } from "@/types/user";
 import type { Tab } from "@/types/tab";
+import type { Page } from "@/types/page";
+import useUser from "@/hooks/use-user";
 
 export interface ViewerContextType {
   tabsList: Tab[];
   activeTab: Tab | null;
   handleTabClick: (tab: Tab) => void;
   handleTabClose: (tab: Tab) => void;
-  fetchTabs: () => void;
+  openPageAsTab: (page: Page) => void;
+  //fetchTabs: () => void;
   isLoading: boolean;
 }
 
 interface ViewerProviderProps {
   children: ReactNode;
-  pageList: Page[]
-  user: User;
 }
 
 const ViewerContext = createContext<ViewerContextType | undefined>(undefined);
 
-const ViewerProvider = ({ children, pageList, user }: ViewerProviderProps) => {
+const ViewerProvider = ({ children }: ViewerProviderProps) => {
   const [tabsList, setTabsList] = useState<Tab[]>([]);
   const [activeTab, setActiveTab] = useState<Tab | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const saveTimeoutRef = useRef<NodeJS.Timeout>(null);
   const isLoadedRef = useRef(false);
+  const user = useUser();
 
-  const fetchTabs = async () => {
+  /* const fetchTabs = async () => {
     if (!user) {
       setActiveTab(null);
       setIsLoading(false);
@@ -61,9 +62,19 @@ const ViewerProvider = ({ children, pageList, user }: ViewerProviderProps) => {
 
   useEffect(() => {
     fetchTabs();
-  }, [user]);
+  }, [user]); */
 
   //todo: sync tabs with backend on change with debounce
+
+  const openPageAsTab = (page: Page) => {
+    const newTab: Tab = {
+      ...page,
+      isActive: false,
+      index: tabsList.length + 1
+    }
+    setTabsList((prev) => [...prev, newTab])
+    setActiveTab(newTab)
+  }
 
   const handleTabClick = (tab: Tab) => {
     setTabsList(
@@ -88,7 +99,8 @@ const ViewerProvider = ({ children, pageList, user }: ViewerProviderProps) => {
     activeTab,
     handleTabClick,
     handleTabClose,
-    fetchTabs,
+    openPageAsTab,
+    //fetchTabs,
     isLoading,
   };
   return (

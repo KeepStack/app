@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import type { Tab } from "@/types/tab";
 import Blank from "./blank";
+import useViewer from "@/hooks/use-viewer";
 //import TextContent from "./text-content";
 
 const initialTabs: Tab[] = [
@@ -27,18 +28,14 @@ const initialTabs: Tab[] = [
 
 const Tabs = () => {
   //let tabsList: Tab[] = [];
-  const [tabsList, setTabsList] = useState<Tab[]>(initialTabs);
-  const [activeTab, setActiveTab] = useState<Tab>();
-
-  const handleTabClick = (tab: Tab) => {
-    setTabsList(
-      tabsList.map((t) => ({
-        ...t,
-        isActive: t.index === tab.index,
-      }))
-    );
-    setActiveTab(tab);
-  };
+  //const [tabsList, setTabsList] = useState<Tab[]>(initialTabs);
+  //const [activeTab, setActiveTab] = useState<Tab>();
+  const {
+    tabsList,
+    activeTab,
+    handleTabClick,
+    handleTabClose,
+  } = useViewer();
 
   return (
     <div className="flex flex-col w-full h-screen">

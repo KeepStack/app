@@ -15,6 +15,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import useViewer from "@/hooks/use-viewer";
 
 interface ListItemProps {
   page: Page;
@@ -26,6 +27,7 @@ const ListItem = ({ page, onClick }: ListItemProps) => {
   const [faviconUrl, setFaviconUrl] = useState<null | string>(null);
   const [faviconError, setFaviconError] = useState(false);
   const [unread, setUnread] = useState<boolean>(true);
+  const { openPageAsTab } = useViewer();
 
   const getDomainFromUrl = (url: string): string | null => {
     try {
@@ -100,8 +102,14 @@ const ListItem = ({ page, onClick }: ListItemProps) => {
   };
 
   const launchPage = (page: Page) => {
-    //TODO: open the page on the viewer
-  };
+      openPageAsTab({
+        id: page.id,
+        title: page.title,
+        url: page.url,
+        type: page.type,
+        dateAdded: page.dateAdded
+      });
+    }
 
   return (
     <a
