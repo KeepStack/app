@@ -1,2 +1,2 @@
 # app
-The web application for Memorable
+The web application for KeepStack
