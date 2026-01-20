@@ -1,2 +1,2 @@
 # app
-The web application for KeepStack
+The web app for KeepStack
